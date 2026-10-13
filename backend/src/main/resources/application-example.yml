@@ -1,0 +1,23 @@
+# Tripzy Backend Configuration Template
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/tripzy_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: YOUR_MYSQL_PASSWORD_HERE
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+app:
+  jwt:
+    secret: YOUR_SECURE_JWT_SECRET_256_BITS_OR_MORE
+    expiration-ms: 86400000
+  cors:
+    allowed-origins: http://localhost:5173,http://localhost:3000
+  ai:
+    api-key: YOUR_GEMINI_API_KEY # leave empty to use the built-in keyword replies
+    model: gemini-3.8-flash

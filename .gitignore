@@ -1,0 +1,14 @@
+# Secrets
+.env
+!.env.example
+
+# Build output
+backend/target/
+frontend/node_modules/
+frontend/dist/
+
+# OS / editor / logs
+.DS_Store
+.idea/
+.vscode/
+*.log

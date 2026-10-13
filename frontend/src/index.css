@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==============================================
+   Forest Trails theme tokens
+   Single source of truth for the brand palette. Values are RGB channels so
+   Tailwind classes (bg-pine, text-forest/80, ...) support opacity modifiers;
+   plain CSS uses them as rgb(var(--pine)).
+   ============================================== */
+:root {
+  --forest: 20 45 32;        /* #142D20 */
+  --pine: 36 92 69;          /* #245C45 */
+  --sage: 127 175 130;       /* #7FAF82 */
+  --soft-green: 216 232 200; /* #D8E8C8 */
+  --linen: 247 245 232;      /* #F7F5E8 */
+
+  --text-primary: 24 39 29;    /* #18271D */
+  --text-secondary: 82 100 86; /* #526456 */
+  --border-color: 220 229 216; /* #DCE5D8 */
+
+  --page-background: var(--linen);
+  --surface-background: 255 255 255;
+  --primary-action: var(--pine);
+  --primary-action-hover: var(--forest);
+  --accent-color: var(--sage);
+  --soft-accent: var(--soft-green);
+}
+
+@layer base {
+  body {
+    @apply font-sans text-ink bg-linen;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-forest;
+  }
+  /* Headings on dark surfaces or photo overlays: linen, unless a heading sets its own colour */
+  :where(.bg-forest, .bg-pine, .bg-trail-950, .bg-brand-gradient) :is(h1, h2, h3, h4, h5, h6) {
+    color: rgb(var(--linen));
+  }
+  :where(.text-white, .text-linen) :is(h1, h2, h3, h4, h5, h6) {
+    color: inherit;
+  }
+
+  ::selection {
+    @apply bg-pine text-white;
+  }
+
+  /* Forms: readable typed text and placeholders everywhere, whatever the surrounding text colour */
+  input, textarea, select {
+    @apply text-ink;
+  }
+  input::placeholder, textarea::placeholder {
+    @apply text-moss-400;
+    opacity: 1;
+  }
+  select option {
+    @apply bg-white text-ink;
+  }
+  input:disabled, textarea:disabled, select:disabled {
+    @apply cursor-not-allowed bg-moss-100 text-moss-500;
+  }
+  input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="true"] {
+    @apply border-red-600;
+  }
+  input[type="checkbox"], input[type="radio"] {
+    accent-color: rgb(var(--pine));
+  }
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+
+  /* Visible keyboard focus on every interactive element */
+  :focus-visible {
+    outline: 2px solid rgb(var(--pine));
+    outline-offset: 2px;
+  }
+  .bg-forest :focus-visible,
+  .bg-pine:focus-visible {
+    outline-color: rgb(var(--sage));
+  }
+
+  /* Disabled buttons: muted but still readable */
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--linen));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border-color));
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--sage));
+}
+
+/* Glassmorphic Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Leaflet Container Styling */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  z-index: 10;
+}
+
+/* Hero backdrop */
+.bg-brand-gradient {
+  background: linear-gradient(135deg, rgb(var(--forest)) 0%, rgb(var(--pine)) 100%);
+}
+
+/* Accent text on dark surfaces */
+.text-gradient {
+  color: rgb(var(--sage));
+}
