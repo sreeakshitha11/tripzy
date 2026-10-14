@@ -52,7 +52,7 @@ public class BudgetService {
         expense.setTitle(request.getTitle());
         expense.setCategory(request.getCategory() != null ? request.getCategory() : "Food & Dining");
         expense.setAmount(request.getAmount());
-        expense.setCurrency(request.getCurrency() != null ? request.getCurrency() : "USD");
+        expense.setCurrency("INR");
         expense.setDate(LocalDate.now());
         expense.setSplitType(request.getSplitType() != null ? request.getSplitType() : "EQUAL");
         expense.setNotes(request.getNotes());

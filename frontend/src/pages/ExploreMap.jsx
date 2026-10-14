@@ -3,11 +3,12 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaf
 import L from 'leaflet';
 import { NavLink } from 'react-router-dom';
 import {
-  MapPin, Search, Compass, Calendar, DollarSign,
+  MapPin, Search, Compass, Calendar, IndianRupee,
   PlusCircle, Heart, Bot, ArrowRight, X, ExternalLink
 } from 'lucide-react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import { formatRupees } from '../utils/currency';
 
 // Custom Leaflet Icons using SVG DivIcon
 const createCustomIcon = (name, color = '#245C45') => {
@@ -89,7 +90,7 @@ export default function ExploreMap() {
       latitude: latlng.lat,
       longitude: latlng.lng,
       description: "Custom coordinate selected on map. You can plan an adventure or organize a new group journey here.",
-      avgBudgetPerDay: 50.0,
+      avgBudgetPerDay: 3000,
       bestTimeToVisit: "Check local seasonal forecast",
       popularAttractions: "Unexplored terrain & backcountry trails",
       heroImageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
@@ -267,7 +268,7 @@ export default function ExploreMap() {
                         <p className="font-semibold text-xs text-forest truncate">{trip.title}</p>
                         <div className="flex items-center justify-between text-[11px] text-moss-500 mt-1">
                           <span>{trip.startDate}</span>
-                          <span className="font-bold text-trail-700">${trip.estimatedBudget}</span>
+                          <span className="font-bold text-trail-700">{formatRupees(trip.estimatedBudget)}</span>
                         </div>
                       </NavLink>
                     ))}

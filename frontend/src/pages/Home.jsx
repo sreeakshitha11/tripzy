@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import { formatRupees } from '../utils/currency';
 
 export default function Home() {
   const { user } = useAuth();
@@ -141,7 +142,7 @@ export default function Home() {
 
                 <div className="pt-3 border-t border-moss-100 flex items-center justify-between text-xs text-moss-600">
                   <span className="font-medium text-moss-500">
-                    Est. <strong className="text-forest">₹{dest.avgBudgetPerDay}</strong> / day
+                    Est. <strong className="text-forest">{formatRupees(dest.avgBudgetPerDay)}</strong> / day
                   </span>
                   <span className="text-trail-600 font-semibold group-hover:underline">
                     Explore Details &rarr;
@@ -218,7 +219,7 @@ export default function Home() {
 
                     <div className="text-right">
                       <span className="text-xs font-bold text-trail-600">
-                        ₹{trip.estimatedBudget?.toLocaleString('en-IN')}
+                        {formatRupees(trip.estimatedBudget)}
                       </span>
                       <span className="block text-[10px] text-emerald-700 font-semibold">
                         {spotsLeft > 0 ? `${spotsLeft} spots left` : 'Full'}

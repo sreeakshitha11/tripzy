@@ -43,7 +43,7 @@ public class Trip {
 
     private String meetingPoint = "Main Airport / Railway Terminal";
 
-    private Double estimatedBudget = 450.0;
+    private Double estimatedBudget = 15000.0;
 
     private String currency = "INR";
 

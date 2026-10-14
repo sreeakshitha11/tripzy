@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import {
-  MapPin, Calendar, Users, DollarSign, Clock, ShieldCheck,
+  MapPin, Calendar, Users, IndianRupee, Clock, ShieldCheck,
   CheckCircle2, ArrowRight, MessageSquare, PlusCircle, AlertCircle
 } from 'lucide-react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import { formatRupees } from '../utils/currency';
 
 export default function TripDetail() {
   const { id } = useParams();
@@ -116,7 +117,7 @@ export default function TripDetail() {
             </div>
 
             <div className="text-right">
-              <span className="text-2xl font-black text-soft font-display">₹{trip.estimatedBudget?.toLocaleString('en-IN')}</span>
+              <span className="text-2xl font-black text-soft font-display">{formatRupees(trip.estimatedBudget)}</span>
               <span className="text-[11px] text-soft block">per person</span>
             </div>
           </div>
@@ -209,7 +210,7 @@ export default function TripDetail() {
               </div>
               <div className="flex justify-between pt-2 border-t border-moss-200">
                 <span>Estimated Budget</span>
-                <strong className="text-trail-700 text-sm font-bold">₹{trip.estimatedBudget?.toLocaleString('en-IN')}</strong>
+                <strong className="text-trail-700 text-sm font-bold">{formatRupees(trip.estimatedBudget)}</strong>
               </div>
             </div>
 

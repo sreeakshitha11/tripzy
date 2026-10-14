@@ -81,7 +81,7 @@ public class TripService {
         trip.setAccommodationPlan(request.getAccommodationPlan());
         trip.setMeetingPoint(request.getMeetingPoint());
         trip.setEstimatedBudget(request.getEstimatedBudget() != null ? request.getEstimatedBudget() : 350.0);
-        trip.setCurrency(request.getCurrency() != null ? request.getCurrency() : "INR");
+        trip.setCurrency("INR");
         trip.setMinParticipants(request.getMinParticipants() != null ? request.getMinParticipants() : 2);
         trip.setMaxParticipants(request.getMaxParticipants() != null ? request.getMaxParticipants() : 8);
         trip.setCurrentParticipants(1);

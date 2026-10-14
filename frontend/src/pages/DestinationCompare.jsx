@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
-  GitCompare, Star, MapPin, Calendar, DollarSign,
+  GitCompare, Star, MapPin, Calendar, IndianRupee,
   Utensils, Navigation, PlusCircle, Heart, ArrowRight
 } from 'lucide-react';
 import api from '../api/client';
+import { formatRupees } from '../utils/currency';
 
 export default function DestinationCompare() {
   const [destinations, setDestinations] = useState([]);
@@ -101,7 +102,7 @@ export default function DestinationCompare() {
 
               <div className="flex justify-between py-2 border-b border-moss-100">
                 <span className="text-moss-500">Est. Daily Budget</span>
-                <strong className="text-trail-700 text-sm font-bold">₹{dest1.avgBudgetPerDay}/day</strong>
+                <strong className="text-trail-700 text-sm font-bold">{formatRupees(dest1.avgBudgetPerDay)}/day</strong>
               </div>
 
               <div className="flex justify-between py-2 border-b border-moss-100">
@@ -163,7 +164,7 @@ export default function DestinationCompare() {
 
               <div className="flex justify-between py-2 border-b border-moss-100">
                 <span className="text-moss-500">Est. Daily Budget</span>
-                <strong className="text-trail-700 text-sm font-bold">₹{dest2.avgBudgetPerDay}/day</strong>
+                <strong className="text-trail-700 text-sm font-bold">{formatRupees(dest2.avgBudgetPerDay)}/day</strong>
               </div>
 
               <div className="flex justify-between py-2 border-b border-moss-100">

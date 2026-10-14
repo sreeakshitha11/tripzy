@@ -44,6 +44,10 @@ public class AIService {
             Tripzy has no listed trips there yet. Point users to app features when useful: Search Trips, \
             Create Trip, Explore Map, Budget Calculator, Itinerary Builder, Trip Planner and My Trips.
 
+            Tripzy is an Indian platform: write every amount in Indian rupees with the ₹ symbol and Indian
+            digit grouping (for example ₹2,500 or ₹1,25,000). Never use $, USD or any other currency; convert
+            foreign prices to rupees.
+
             Keep replies concise and conversational, formatted with Markdown (bold, short bullet lists). \
             Use more length only when the user asks for an itinerary or a detailed plan.
             """;
@@ -165,13 +169,34 @@ public class AIService {
         return response.text();
     }
 
+    // Formats an amount as rupees with Indian digit grouping, e.g. ₹1,25,000
+    static String rupees(Double amount) {
+        if (amount == null) return "₹0";
+        String digits = String.valueOf(Math.round(amount));
+        boolean negative = digits.startsWith("-");
+        if (negative) digits = digits.substring(1);
+        StringBuilder out = new StringBuilder();
+        int len = digits.length();
+        if (len <= 3) {
+            out.append(digits);
+        } else {
+            String head = digits.substring(0, len - 3);
+            for (int i = 0; i < head.length(); i++) {
+                if (i > 0 && (head.length() - i) % 2 == 0) out.append(',');
+                out.append(head.charAt(i));
+            }
+            out.append(',').append(digits.substring(len - 3));
+        }
+        return (negative ? "-₹" : "₹") + out;
+    }
+
     // Live Tripzy data the model can ground its answers in
     private String buildTripzyContext() {
         StringBuilder ctx = new StringBuilder("## Tripzy destinations\n");
         for (Destination d : destinationRepository.findAll()) {
             ctx.append("- ").append(d.getName()).append(" (").append(d.getCity()).append(", ").append(d.getCountry()).append(")")
                .append(" | best time: ").append(d.getBestTimeToVisit())
-               .append(" | avg budget/day: ").append(d.getCurrency()).append(" ").append(d.getAvgBudgetPerDay())
+               .append(" | avg budget/day: ").append(rupees(d.getAvgBudgetPerDay()))
                .append(" | rating: ").append(d.getRating())
                .append(" | tags: ").append(d.getTags())
                .append(" | attractions: ").append(d.getPopularAttractions())
@@ -189,7 +214,7 @@ public class AIService {
                .append(" | ").append(t.getStartDate()).append(" to ").append(t.getEndDate())
                .append(" | category: ").append(t.getCategory())
                .append(" | style: ").append(t.getTravelStyle())
-               .append(" | budget: ").append(t.getCurrency()).append(" ").append(t.getEstimatedBudget())
+               .append(" | budget per person: ").append(rupees(t.getEstimatedBudget()))
                .append(" | spots left: ").append(t.getMaxParticipants() - t.getCurrentParticipants())
                .append(" | organizer: ").append(t.getOrganizerName())
                .append("\n");
@@ -221,7 +246,7 @@ public class AIService {
                     int remaining = t.getMaxParticipants() - t.getCurrentParticipants();
                     reply.append("- **").append(t.getTitle()).append("** to *").append(t.getDestinationName()).append("*\n")
                          .append("  • Dates: ").append(t.getStartDate()).append(" to ").append(t.getEndDate()).append("\n")
-                         .append("  • Budget: ").append(t.getCurrency()).append(" ").append(t.getEstimatedBudget()).append("\n")
+                         .append("  • Budget: ").append(rupees(t.getEstimatedBudget())).append("\n")
                          .append("  • Available Spots: ").append(remaining).append(" remaining (Organizer: ").append(t.getOrganizerName()).append(")\n\n");
                     referencedData.add(t);
                 }
@@ -257,8 +282,8 @@ public class AIService {
                 followUps.add("Build a 5-day itinerary for " + matchedDest.getName());
             } else if (query.contains("cost") || query.contains("budget") || query.contains("price") || query.contains("expense")) {
                 reply.append("Estimated travel costs for **").append(matchedDest.getName()).append("**:\n\n")
-                     .append("- **Daily Average Budget:** approx. ").append(matchedDest.getCurrency()).append(" ")
-                     .append(matchedDest.getAvgBudgetPerDay()).append(" per day.\n")
+                     .append("- **Daily Average Budget:** approx. ").append(rupees(matchedDest.getAvgBudgetPerDay()))
+                     .append(" per day.\n")
                      .append("- **Accommodation & Meals:** Includes local stays and regional culinary experiences (local specialties: ")
                      .append(matchedDest.getCuisine()).append(").\n\n")
                      .append("*Note: All amounts are estimates based on standard traveler benchmarks and vary by season.*");

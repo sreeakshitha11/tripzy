@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {
-  Users, MessageSquare, Megaphone, BarChart2, DollarSign,
+  Users, MessageSquare, Megaphone, BarChart2, IndianRupee,
   Send, ShieldCheck, Plus, CheckCircle2, AlertTriangle, ArrowRight
 } from 'lucide-react';
 import api from '../api/client';

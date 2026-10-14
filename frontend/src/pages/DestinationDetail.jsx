@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import {
-  MapPin, Star, Calendar, DollarSign, Heart, PlusCircle,
+  MapPin, Star, Calendar, IndianRupee, Heart, PlusCircle,
   Bot, Utensils, Navigation, Info, Users, ArrowRight, Share2, MessageSquare
 } from 'lucide-react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import { formatRupees } from '../utils/currency';
 
 export default function DestinationDetail() {
   const { id } = useParams();
@@ -260,7 +261,7 @@ export default function DestinationDetail() {
           <div className="bg-forest text-white p-6 rounded-3xl shadow-soft space-y-4">
             <h3 className="font-bold text-base font-display">Estimated Travel Costs</h3>
             <div className="text-3xl font-extrabold text-soft font-display">
-              ₹{destination.avgBudgetPerDay?.toLocaleString('en-IN')} <span className="text-xs font-normal text-moss-300">/ day per person</span>
+              {formatRupees(destination.avgBudgetPerDay)} <span className="text-xs font-normal text-moss-300">/ day per person</span>
             </div>
             <p className="text-xs text-moss-300 leading-relaxed">
               *Clearly labeled as estimates based on moderate accommodations, dining, and local activities. Actual expenses depend on travel style and group size.
@@ -291,7 +292,7 @@ export default function DestinationDetail() {
                     </NavLink>
                     <div className="flex items-center justify-between text-[11px] text-moss-500">
                       <span>{trip.startDate}</span>
-                      <span className="font-bold text-trail-600">₹{trip.estimatedBudget?.toLocaleString('en-IN')}</span>
+                      <span className="font-bold text-trail-600">{formatRupees(trip.estimatedBudget)}</span>
                     </div>
                     <NavLink
                       to={`/trips/${trip.id}`}

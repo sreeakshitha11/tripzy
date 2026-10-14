@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import client from '../api/client';
+import { formatRupees } from '../utils/currency';
 
 export default function AdminDashboard() {
   const { user } = useAuth();
@@ -374,7 +375,7 @@ export default function AdminDashboard() {
                       {t.startDate} - {t.endDate}
                     </td>
                     <td className="p-4 font-semibold text-emerald-700">
-                      ${t.budgetEstimate}
+                      {formatRupees(t.estimatedBudget ?? t.budgetEstimate)}
                     </td>
                     <td className="p-4 text-right">
                       <button

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
-  Search, Filter, MapPin, Calendar, Users, DollarSign,
+  Search, Filter, MapPin, Calendar, Users, IndianRupee,
   ShieldCheck, ArrowRight, Compass, PlusCircle
 } from 'lucide-react';
 import api from '../api/client';
+import { formatRupees } from '../utils/currency';
 
 export default function SearchTrips() {
   const [trips, setTrips] = useState([]);
@@ -98,12 +99,12 @@ export default function SearchTrips() {
         <div className="space-y-1.5">
           <label className="text-xs font-semibold text-moss-700">Max Budget (₹)</label>
           <div className="relative">
-            <DollarSign className="w-4 h-4 text-moss-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <IndianRupee className="w-4 h-4 text-moss-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="number"
               value={maxBudget}
               onChange={(e) => setMaxBudget(e.target.value)}
-              placeholder="e.g. 500"
+              placeholder="e.g. 25000"
               className="w-full pl-9 pr-3 py-2 text-xs bg-moss-50 border border-moss-200 rounded-xl focus:bg-white focus:border-pine outline-none"
             />
           </div>
@@ -141,7 +142,7 @@ export default function SearchTrips() {
                       {trip.category}
                     </div>
                     <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-pine text-white font-extrabold text-xs">
-                      ₹{trip.estimatedBudget?.toLocaleString('en-IN')}
+                      {formatRupees(trip.estimatedBudget)}
                     </div>
                   </div>
 

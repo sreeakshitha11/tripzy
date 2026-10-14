@@ -38,7 +38,7 @@ public class Destination {
 
     private Double avgBudgetPerDay;
 
-    private String currency = "USD";
+    private String currency = "INR";
 
     private String tags; // e.g. "Mountains,Adventure,Snow"
 

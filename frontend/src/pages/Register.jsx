@@ -107,7 +107,7 @@ export default function Register() {
                 type="text"
                 value={formData.phone}
                 onChange={e => setFormData({ ...formData, phone: e.target.value })}
-                placeholder="+1 555-0192"
+                placeholder="+91 98765 43210"
                 className="w-full bg-white border border-moss-200 rounded-xl pl-10 pr-4 py-2.5 text-sm text-forest focus:outline-none focus:border-pine"
               />
             </div>

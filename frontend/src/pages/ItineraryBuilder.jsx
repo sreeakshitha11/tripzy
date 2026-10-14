@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, NavLink } from 'react-router-dom';
 import {
-  Route, Plus, Clock, MapPin, DollarSign, Trash2,
+  Route, Plus, Clock, MapPin, IndianRupee, Trash2,
   Calendar, CheckCircle2, ArrowRight, Share2
 } from 'lucide-react';
 import api from '../api/client';
+import { formatRupees } from '../utils/currency';
 
 export default function ItineraryBuilder() {
   const [searchParams] = useSearchParams();
@@ -20,7 +21,7 @@ export default function ItineraryBuilder() {
     title: '',
     description: '',
     locationName: '',
-    estimatedCost: 20.0,
+    estimatedCost: 1000,
     notes: ''
   });
 
@@ -72,7 +73,7 @@ export default function ItineraryBuilder() {
         title: '',
         description: '',
         locationName: '',
-        estimatedCost: 20.0,
+        estimatedCost: 1000,
         notes: ''
       });
     } catch (err) {
@@ -151,7 +152,7 @@ export default function ItineraryBuilder() {
                   )}
                   {item.estimatedCost > 0 && (
                     <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold text-[11px]">
-                      Est. ${item.estimatedCost}
+                      Est. {formatRupees(item.estimatedCost)}
                     </span>
                   )}
                 </div>

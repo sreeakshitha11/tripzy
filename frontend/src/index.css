@@ -45,7 +45,8 @@
   }
 
   ::selection {
-    @apply bg-pine text-white;
+    background-color: rgb(var(--pine));
+    color: #fff;
   }
 
   /* Forms: readable typed text and placeholders everywhere, whatever the surrounding text colour */

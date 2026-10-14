@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
-  Compass, Calendar, Navigation, DollarSign, Users,
+  Compass, Calendar, Navigation, IndianRupee, Users,
   CheckCircle2, ArrowRight, ArrowLeft, PlusCircle, AlertCircle
 } from 'lucide-react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import { formatRupees } from '../utils/currency';
 
 export default function CreateTrip() {
   const [searchParams] = useSearchParams();
@@ -26,7 +27,7 @@ export default function CreateTrip() {
     transportType: 'Shared Cab / Rental SUV',
     accommodationPlan: 'Boutique Cottages & Camps',
     meetingPoint: 'Central Airport / Railway Terminal',
-    estimatedBudget: 350.0,
+    estimatedBudget: 15000,
     currency: 'INR',
     minParticipants: 2,
     maxParticipants: 6,
@@ -289,12 +290,12 @@ export default function CreateTrip() {
             <h2 className="text-lg font-bold text-forest font-display">Step 4: Budget & Group Capacity</h2>
             <div className="space-y-4 text-xs">
               <div>
-                <label className="font-semibold text-moss-700 block mb-1">Estimated Budget per Person (₹ INR)</label>
+                <label className="font-semibold text-moss-700 block mb-1">Estimated Budget per Person (₹)</label>
                 <input
                   type="number"
                   value={formData.estimatedBudget}
                   onChange={(e) => handleChange('estimatedBudget', Number(e.target.value))}
-                  placeholder="e.g. 350"
+                  placeholder="e.g. 15000"
                   className="w-full p-3 bg-moss-50 border border-moss-200 rounded-xl focus:bg-white focus:border-pine outline-none text-moss-900 placeholder:text-moss-600"
                 />
               </div>
@@ -394,7 +395,7 @@ export default function CreateTrip() {
               </div>
               <div className="flex justify-between border-b border-moss-200 pb-2">
                 <span className="text-moss-500">Capacity & Budget:</span>
-                <strong>{formData.maxParticipants} travelers max • ₹{formData.estimatedBudget?.toLocaleString('en-IN')}/person</strong>
+                <strong>{formData.maxParticipants} travelers max • {formatRupees(formData.estimatedBudget)}/person</strong>
               </div>
               <div className="flex justify-between">
                 <span className="text-moss-500">Transport:</span>

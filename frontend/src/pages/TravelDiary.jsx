@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import { formatRupees } from '../utils/currency';
 
 export default function TravelDiary() {
   const { isAuthenticated } = useAuth();
@@ -158,7 +159,7 @@ export default function TravelDiary() {
                   <Star className="w-3.5 h-3.5 fill-amber-400" /> {entry.rating} / 5
                 </span>
                 {entry.expenses > 0 && (
-                  <span className="font-bold text-moss-700">Spent: ${entry.expenses}</span>
+                  <span className="font-bold text-moss-700">Spent: {formatRupees(entry.expenses)}</span>
                 )}
               </div>
             </div>

@@ -29,7 +29,7 @@ public class TripDtos {
         private String accommodationPlan;
         private String meetingPoint;
         private Double estimatedBudget;
-        private String currency = "USD";
+        private String currency = "INR";
         private Integer minParticipants = 2;
         private Integer maxParticipants = 8;
         private String travelStyle;

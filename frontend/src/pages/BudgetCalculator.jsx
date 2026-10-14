@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import {
-  Calculator, DollarSign, Users, PieChart, Plus,
+  Calculator, IndianRupee, Users, PieChart, Plus,
   CheckCircle2, AlertCircle, ArrowRight, Wallet
 } from 'lucide-react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
+import { formatRupees } from '../utils/currency';
 
 export default function BudgetCalculator() {
   const [searchParams] = useSearchParams();
   const destParam = searchParams.get('destination') || 'Manali';
-  const dailyParam = Number(searchParams.get('dailyCost')) || 50;
+  const dailyParam = Number(searchParams.get('dailyCost')) || 3000;
 
   const { user, isAuthenticated } = useAuth();
   const [activeTab, setActiveTab] = useState('estimator'); // estimator or split
@@ -19,13 +20,13 @@ export default function BudgetCalculator() {
 
   // Category Estimates
   const [costs, setCosts] = useState({
-    transport: 120,
-    accommodation: 180,
-    food: 100,
-    activities: 80,
-    localTransit: 40,
-    shopping: 50,
-    emergencyReserve: 50
+    transport: 10000,
+    accommodation: 15000,
+    food: 8000,
+    activities: 6000,
+    localTransit: 3000,
+    shopping: 4000,
+    emergencyReserve: 4000
   });
 
   // Shared Group Expenses State
@@ -163,7 +164,7 @@ export default function BudgetCalculator() {
             </div>
 
             <div className="space-y-3 pt-3 border-t border-moss-100 text-xs">
-              <span className="font-bold text-moss-400 uppercase tracking-wider block">Cost Categories (₹ INR)</span>
+              <span className="font-bold text-moss-400 uppercase tracking-wider block">Cost Categories (₹)</span>
               {Object.keys(costs).map((cat) => (
                 <div key={cat} className="flex items-center justify-between gap-4">
                   <span className="capitalize font-medium text-moss-700">
@@ -191,15 +192,15 @@ export default function BudgetCalculator() {
               </span>
               <div>
                 <h3 className="text-4xl font-black text-trail-300 font-display">
-                  ₹{totalCost.toLocaleString('en-IN')}
+                  {formatRupees(totalCost)}
                 </h3>
                 <span className="text-xs text-moss-300">Total for all {travelers} travelers</span>
               </div>
 
               <div className="p-4 bg-white/10 rounded-2xl border border-white/15 space-y-1">
                 <span className="text-[11px] text-moss-300 block">Cost Per Traveler:</span>
-                <span className="text-2xl font-bold text-white font-display">₹{perPersonTotal.toLocaleString('en-IN')}</span>
-                <span className="text-[10px] text-moss-300 block">(₹{Math.round(perPersonTotal / days).toLocaleString('en-IN')} / person per day)</span>
+                <span className="text-2xl font-bold text-white font-display">{formatRupees(perPersonTotal)}</span>
+                <span className="text-[10px] text-moss-300 block">({formatRupees(Math.round(perPersonTotal / days))} / person per day)</span>
               </div>
 
               <p className="text-[11px] text-moss-300 italic leading-relaxed">
@@ -257,12 +258,12 @@ export default function BudgetCalculator() {
 
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <label className="font-semibold text-moss-700 block mb-1">Amount (₹ INR)</label>
+                      <label className="font-semibold text-moss-700 block mb-1">Amount (₹)</label>
                       <input
                         type="number"
                         value={newExpense.amount}
                         onChange={(e) => setNewExpense({ ...newExpense, amount: e.target.value })}
-                        placeholder="e.g. 120"
+                        placeholder="e.g. 2500"
                         className="w-full p-2.5 bg-moss-50 border border-moss-200 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-pine/40 focus:border-pine text-moss-900 placeholder:text-moss-600"
                         required
                       />
@@ -302,7 +303,7 @@ export default function BudgetCalculator() {
                             <span className="font-semibold text-moss-900 block">{exp.title}</span>
                             <span className="text-[10px] text-moss-400">Paid by {exp.payerName} • {exp.category}</span>
                           </div>
-                          <span className="font-bold text-trail-700">₹{exp.amount?.toLocaleString('en-IN')}</span>
+                          <span className="font-bold text-trail-700">{formatRupees(exp.amount)}</span>
                         </div>
                       ))}
                     </div>
@@ -320,7 +321,7 @@ export default function BudgetCalculator() {
                     <span>Calculated Balances</span>
                   </h3>
                   <span className="text-xs font-bold text-trail-700">
-                    Total: ₹{(balanceSummary?.totalGroupExpenses || 0).toLocaleString('en-IN')}
+                    Total: {formatRupees((balanceSummary?.totalGroupExpenses || 0))}
                   </span>
                 </div>
 
@@ -335,13 +336,13 @@ export default function BudgetCalculator() {
                         />
                         <div>
                           <span className="font-bold text-moss-900 block">{m.name}</span>
-                          <span className="text-[10px] text-moss-400">Paid ₹{m.totalPaid?.toLocaleString('en-IN')} • Share ₹{m.totalOwed?.toLocaleString('en-IN')}</span>
+                          <span className="text-[10px] text-moss-400">Paid {formatRupees(m.totalPaid)} • Share {formatRupees(m.totalOwed)}</span>
                         </div>
                       </div>
 
                       <div className="text-right">
                         <span className={`font-bold block ${m.netBalance >= 0 ? 'text-emerald-700' : 'text-red-600'}`}>
-                          {m.netBalance >= 0 ? `+ ₹${m.netBalance?.toLocaleString('en-IN')}` : `- ₹${Math.abs(m.netBalance)?.toLocaleString('en-IN')}`}
+                          {m.netBalance >= 0 ? `+ ${formatRupees(m.netBalance)}` : `- ${formatRupees(Math.abs(m.netBalance))}`}
                         </span>
                         <span className="text-[10px] text-moss-400">
                           {m.netBalance >= 0 ? 'Gets back' : 'Owes'}

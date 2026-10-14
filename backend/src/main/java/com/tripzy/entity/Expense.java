@@ -28,7 +28,7 @@ public class Expense {
     @Column(nullable = false)
     private Double amount;
 
-    private String currency = "USD";
+    private String currency = "INR";
 
     private LocalDate date = LocalDate.now();
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
-import { Compass, Search, Star, MapPin, DollarSign, Calendar, ArrowRight, Filter } from 'lucide-react';
+import { Compass, Search, Star, MapPin, IndianRupee, Calendar, ArrowRight, Filter } from 'lucide-react';
 import api from '../api/client';
 
 export default function DiscoverPlaces() {

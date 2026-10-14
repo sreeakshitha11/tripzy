@@ -105,7 +105,7 @@ public class DataSeedService implements ApplicationRunner {
                 "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80",
                 "High-altitude Himalayan wonderland surrounded by pine forests, snow-clad peaks, and thrilling passes.",
                 "Manali is nestled in the Beas River Valley, serving as the gateway to Rohtang Pass, Solang Valley, and Spiti.",
-                "October to June (Snow season: Dec-Feb)", "Siddu, Trout fish, Thukpa, Himachali Dham", 45.0, "USD",
+                "October to June (Snow season: Dec-Feb)", "Siddu, Trout fish, Thukpa, Himachali Dham", 2500.0, "INR",
                 "Mountains,Snow,Adventure,Trekking", 4.9, 128,
                 "Solang Valley, Rohtang Pass, Old Manali Cafes, Hadimba Temple, Jogini Waterfall",
                 "Fly to Bhuntar Airport (50km) or take overnight Volvo bus from Delhi / Chandigarh.");
@@ -115,7 +115,7 @@ public class DataSeedService implements ApplicationRunner {
                 "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1200&q=80",
                 "The Land of High Passes featuring surreal lunar landscapes, turquoise high-altitude lakes, and ancient Buddhist monasteries.",
                 "Perched at over 11,000 feet, Ladakh offers dramatic vistas from Pangong Tso to the sand dunes of Nubra Valley.",
-                "May to September (Roads open)", "Skyu, Chhurpi yak cheese, Butter tea, Momos", 60.0, "USD",
+                "May to September (Roads open)", "Skyu, Chhurpi yak cheese, Butter tea, Momos", 3500.0, "INR",
                 "Mountains,HighPasses,Stargazing,Monasteries,Biking", 4.9, 210,
                 "Pangong Tso, Khardung La, Nubra Valley Hunder Dunes, Thiksey Monastery, Magnetic Hill",
                 "Direct flights to Kushok Bakula Rimpochee Airport (Leh) or Manali-Leh Highway roadtrip.");
@@ -125,7 +125,7 @@ public class DataSeedService implements ApplicationRunner {
                 "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80",
                 "Sun-soaked golden beaches, vibrant Portuguese heritage, bohemian night markets, and thrilling water sports.",
                 "A paradise for travelers who love ocean sunsets, beach shack dining, and coastal camaraderie.",
-                "November to March", "Fish Curry Rice, Bebinca, Prawn Balchão, Goan Poi", 40.0, "USD",
+                "November to March", "Fish Curry Rice, Bebinca, Prawn Balchão, Goan Poi", 3000.0, "INR",
                 "Beaches,Nightlife,Surfing,Heritage,Coastal", 4.8, 340,
                 "Baga & Palolem Beaches, Fort Aguada, Chapora Fort, Dudhsagar Falls, Fontainhas Latin Quarter",
                 "Fly into Dabolim or Mopa Airport, or Madgaon railway junction.");
@@ -135,7 +135,7 @@ public class DataSeedService implements ApplicationRunner {
                 "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80",
                 "Japan's cultural capital known for thousands of classical Buddhist temples, gardens, imperial palaces, and traditional wooden machiya houses.",
                 "Experience the ethereal Arashiyama Bamboo Grove and vermilion torii gates of Fushimi Inari Taisha.",
-                "March to May (Cherry Blossoms) & Oct to Nov (Autumn Foliage)", "Kaiseki, Matcha sweets, Ramen, Yudofu", 85.0, "USD",
+                "March to May (Cherry Blossoms) & Oct to Nov (Autumn Foliage)", "Kaiseki, Matcha sweets, Ramen, Yudofu", 12000.0, "INR",
                 "Culture,Temples,Heritage,Photography,Zen", 4.9, 412,
                 "Fushimi Inari Taisha, Kinkaku-ji (Golden Pavilion), Arashiyama Bamboo Forest, Gion Geisha District",
                 "Shinkansen bullet train from Tokyo (2 hours 15 mins) or Kansai Airport Express from Osaka.");
@@ -145,7 +145,7 @@ public class DataSeedService implements ApplicationRunner {
                 "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80",
                 "Spectacular volcanic island crowned by whitewashed villages, blue-domed churches, and world-famous caldera sunsets.",
                 "Perched along sheer Aegean cliffs, Santorini is legendary for its romantic panoramas, volcanic wine, and cliff paths.",
-                "April to October", "Fava me Koukia, Tomato Gefthedes, Fresh Grilled Octopus, Assyrtiko Wine", 110.0, "USD",
+                "April to October", "Fava me Koukia, Tomato Gefthedes, Fresh Grilled Octopus, Assyrtiko Wine", 15000.0, "INR",
                 "Islands,Romantic,Beaches,Sunsets,Sailing", 4.9, 520,
                 "Oia Sunset Point, Fira to Oia Cliff Walk, Red Beach, Akrotiri Archaeological Site, Ammoudi Bay",
                 "Direct flights from Athens or ferry from Piraeus / Heraklion.");
@@ -155,7 +155,7 @@ public class DataSeedService implements ApplicationRunner {
                 "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=1200&q=80",
                 "Iconic alpine wonderland framed by the pyramid-shaped Matterhorn peak, pristine glacier lakes, and scenic cogwheel railways.",
                 "A car-free paradise offering world-class skiing, summer ridge hiking, and traditional alpine chalets.",
-                "Dec to April (Skiing) & July to Sept (Hiking)", "Swiss Cheese Fondue, Raclette, Rösti, Alpine Chocolate", 140.0, "USD",
+                "Dec to April (Skiing) & July to Sept (Hiking)", "Swiss Cheese Fondue, Raclette, Rösti, Alpine Chocolate", 20000.0, "INR",
                 "Mountains,Skiing,Luxury,Hiking,Glaciers", 4.9, 185,
                 "Matterhorn Glacier Paradise, Gornergrat Railway, 5 Lakes Trail, Sunnegga, Alpine Village",
                 "Train from Zurich or Geneva Airport via Visp to Zermatt.");
@@ -166,7 +166,7 @@ public class DataSeedService implements ApplicationRunner {
                 "Join our small group adventure through Solang Valley, Rohtang Pass, and rustic Old Manali cafes. Suitable for all fitness levels.",
                 "Adventure", LocalDate.now().plusDays(14), LocalDate.now().plusDays(19), 6,
                 "Shared 4x4 SUV & Volvo Transfer", "Alpine Cottages & Stargazing Dome Camps",
-                "Chandigarh Airport / Manali Mall Road", 380.0, "USD", 3, 6, 2,
+                "Chandigarh Airport / Manali Mall Road", 18500.0, "INR", 3, 6, 2,
                 "Moderate Adventurer", "Punctual departures, leave no trace, zero littering.",
                 "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?auto=format&fit=crop&w=1200&q=80");
 
@@ -175,7 +175,7 @@ public class DataSeedService implements ApplicationRunner {
                 "Epic expedition across Khardung La, Nubra Valley sand dunes, and overnight camping beside crystal blue Pangong Lake.",
                 "Biking & Roadtrip", LocalDate.now().plusDays(25), LocalDate.now().plusDays(33), 9,
                 "Royal Enfield Himalayan 450 + Support Vehicle", "Eco Huts & Lakeside Glamping",
-                "Leh Main Market, near Shanti Stupa", 680.0, "USD", 4, 8, 3,
+                "Leh Main Market, near Shanti Stupa", 32000.0, "INR", 4, 8, 3,
                 "Active Adventurer", "Valid motorcycle permit required, mandatory acclimatization day.",
                 "https://images.unsplash.com/photo-1581793745862-99fde7fa73d2?auto=format&fit=crop&w=1200&q=80");
 
@@ -184,7 +184,7 @@ public class DataSeedService implements ApplicationRunner {
                 "Relaxed seaside journey covering Morjim surf lessons, Palolem kayaking, Latin Quarter heritage walks, and beach shacks.",
                 "Leisure & Beach", LocalDate.now().plusDays(10), LocalDate.now().plusDays(15), 5,
                 "Rented Scooters & Coastal Cabs", "Boutique Beachfront Villas",
-                "Dabolim Airport Arrivals Terminal", 290.0, "USD", 2, 6, 2,
+                "Dabolim Airport Arrivals Terminal", 14500.0, "INR", 2, 6, 2,
                 "Chill Beachgoer", "Good vibes only, eco-friendly beach habits.",
                 "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80");
 
@@ -193,7 +193,7 @@ public class DataSeedService implements ApplicationRunner {
                 "Cliffside walking trails, volcanic hot springs catamaran cruise, and wine tasting under the legendary Oia twilight.",
                 "Culture & Leisure", LocalDate.now().plusDays(30), LocalDate.now().plusDays(36), 6,
                 "Private Minivan & Luxury Catamaran", "Cliffside Cave Suites in Imerovigli",
-                "Fira Central Bus Station", 950.0, "USD", 3, 6, 3,
+                "Fira Central Bus Station", 125000.0, "INR", 3, 6, 3,
                 "Explorer", "Sunscreen mandatory, bring walking shoes for cobblestones.",
                 "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=80");
 
@@ -202,7 +202,7 @@ public class DataSeedService implements ApplicationRunner {
                 "Immersion in Japanese heritage: early morning bamboo forest strolls, kimono photography, and authentic matcha tea ceremonies.",
                 "Culture", LocalDate.now().plusDays(40), LocalDate.now().plusDays(46), 7,
                 "Kyoto City Bus & JR Rail Pass", "Traditional Ryokan with Onsen",
-                "Kyoto Central Station North Exit", 820.0, "USD", 2, 5, 1,
+                "Kyoto Central Station North Exit", 110000.0, "INR", 2, 5, 1,
                 "Mindful Explorer", "Respect shrine decorum, quiet hours after 10 PM.",
                 "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80");
 
@@ -262,7 +262,7 @@ public class DataSeedService implements ApplicationRunner {
         item1.setLocationName("Hadimba Temple, Old Manali");
         item1.setLatitude(32.2483);
         item1.setLongitude(77.1805);
-        item1.setEstimatedCost(15.0);
+        item1.setEstimatedCost(800.0);
         item1.setSortOrder(1);
         itineraryItemRepository.save(item1);
 
@@ -275,7 +275,7 @@ public class DataSeedService implements ApplicationRunner {
         item2.setLocationName("Solang Valley");
         item2.setLatitude(32.3166);
         item2.setLongitude(77.1575);
-        item2.setEstimatedCost(45.0);
+        item2.setEstimatedCost(2500.0);
         item2.setSortOrder(2);
         itineraryItemRepository.save(item2);
 

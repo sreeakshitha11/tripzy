@@ -72,7 +72,7 @@ public class ItineraryService {
             morning.setLocationName(request.getDestination() + " Central");
             morning.setLatitude(lat);
             morning.setLongitude(lng);
-            morning.setEstimatedCost(25.0);
+            morning.setEstimatedCost(500.0);
             morning.setNotes("Wear comfortable walking shoes. Keep hydration ready.");
             morning.setSortOrder(1);
             items.add(itemRepository.save(morning));
@@ -87,7 +87,7 @@ public class ItineraryService {
             afternoon.setLocationName(request.getDestination() + " Valley / Waterfront");
             afternoon.setLatitude(lat);
             afternoon.setLongitude(lng);
-            afternoon.setEstimatedCost(40.0);
+            afternoon.setEstimatedCost(1500.0);
             afternoon.setNotes("Check weather conditions before outdoor session.");
             afternoon.setSortOrder(2);
             items.add(itemRepository.save(afternoon));
@@ -102,7 +102,7 @@ public class ItineraryService {
             evening.setLocationName(request.getDestination() + " Sunset Promenade");
             evening.setLatitude(lat);
             evening.setLongitude(lng);
-            evening.setEstimatedCost(35.0);
+            evening.setEstimatedCost(1200.0);
             evening.setNotes("Great photo opportunities during golden hour.");
             evening.setSortOrder(3);
             items.add(itemRepository.save(evening));

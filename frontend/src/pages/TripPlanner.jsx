@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, Compass, DollarSign, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Calendar, Compass, IndianRupee, Sparkles, CheckCircle2, ArrowRight } from 'lucide-react';
 import api from '../api/client';
 import { useAuth } from '../context/AuthContext';
 

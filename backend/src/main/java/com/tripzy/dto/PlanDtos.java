@@ -67,7 +67,7 @@ public class PlanDtos {
         private String category = "Food & Dining";
         @NotNull(message = "Amount is required")
         private Double amount;
-        private String currency = "USD";
+        private String currency = "INR";
         private String splitType = "EQUAL";
         private String notes;
         private List<Long> memberIds; // for equal split or custom calculation
