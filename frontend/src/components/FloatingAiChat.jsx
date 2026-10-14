@@ -3,6 +3,17 @@ import { Bot, X, Send, Sparkles, MessageCircle, ArrowRight, Compass } from 'luci
 import { NavLink } from 'react-router-dom';
 import api from '../api/client';
 
+// Explain why a chat request failed instead of a generic message
+const chatErrorMessage = (err) => {
+  if (!err.response) {
+    return "I couldn't reach the Tripzy server. If the site was idle, the server may be waking up (this can take up to a minute). Please try again shortly.";
+  }
+  if (err.response.status === 401 || err.response.status === 403) {
+    return "Your session has expired. Please sign in again and retry.";
+  }
+  return "Something went wrong on the Tripzy server. Please try again in a moment.";
+};
+
 export default function FloatingAiChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -51,7 +62,7 @@ export default function FloatingAiChat() {
     } catch (err) {
       setMessages(prev => [
         ...prev,
-        { sender: 'ai', text: "Sorry, I encountered a temporary connection issue. Please try again." }
+        { sender: 'ai', text: chatErrorMessage(err) }
       ]);
     } finally {
       setLoading(false);

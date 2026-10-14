@@ -69,6 +69,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
                     "/api/auth/**",
+                    // Tripzy AI only uses public destination/trip data, so visitors can chat without signing in
+                    "/api/ai/**",
                     "/ws/**",
                     "/uploads/**",
                     "/error"

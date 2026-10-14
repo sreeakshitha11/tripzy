@@ -3,6 +3,17 @@ import { useSearchParams, NavLink } from 'react-router-dom';
 import { Bot, Send, Sparkles, Compass, MapPin, ArrowRight, RefreshCw, MessageSquare } from 'lucide-react';
 import api from '../api/client';
 
+// Explain why a chat request failed instead of a generic message
+const chatErrorMessage = (err) => {
+  if (!err.response) {
+    return "I couldn't reach the Tripzy server. If the site was idle, the server may be waking up (this can take up to a minute). Please try again shortly.";
+  }
+  if (err.response.status === 401 || err.response.status === 403) {
+    return "Your session has expired. Please sign in again and retry.";
+  }
+  return "Something went wrong on the Tripzy server. Please try again in a moment.";
+};
+
 export default function TripzyAiPage() {
   const [searchParams] = useSearchParams();
   const initialPrompt = searchParams.get('prompt') || '';
@@ -57,7 +68,7 @@ export default function TripzyAiPage() {
     } catch (err) {
       setMessages(prev => [
         ...prev,
-        { sender: 'ai', text: "I encountered an error querying the travel data. Please try asking again." }
+        { sender: 'ai', text: chatErrorMessage(err) }
       ]);
     } finally {
       setLoading(false);
