@@ -90,6 +90,9 @@ export default function Register() {
               <Mail className="w-4 h-4 text-moss-500 absolute left-3.5 top-3.5" />
               <input
                 type="email"
+                autoCapitalize="none"
+                autoCorrect="off"
+                autoComplete="email"
                 required
                 value={formData.email}
                 onChange={e => setFormData({ ...formData, email: e.target.value })}

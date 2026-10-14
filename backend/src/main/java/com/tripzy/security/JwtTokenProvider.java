@@ -18,7 +18,7 @@ public class JwtTokenProvider {
 
     public JwtTokenProvider(
             @Value("${app.jwt.secret:tripzySuperSecretSecureKeyWithAtLeast256BitsLengthForHmacSha256Verification!}") String secret,
-            @Value("${app.jwt.expiration-ms:86400000}") long expirationMs) {
+            @Value("${app.jwt.expiration-ms:2592000000}") long expirationMs) {
         byte[] secretBytes = secret.getBytes(StandardCharsets.UTF_8);
         if (secretBytes.length < 32) {
             throw new IllegalStateException("JWT_SECRET is too short (" + secretBytes.length

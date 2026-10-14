@@ -316,7 +316,7 @@ Set these in the **Render** dashboard (backend):
 | `CORS_ALLOWED_ORIGINS` | Yes | Your frontend URL. See [CORS configuration](#cors-configuration). |
 | `AI_MODEL` | No | Main Gemini model. Default: `gemini-3.8-flash` |
 | `AI_FALLBACK_MODELS` | No | Comma-separated backup models. Default: `gemini-3.1-flash-lite,gemini-3.5-flash-lite` |
-| `JWT_EXPIRATION_MS` | No | Login session length in milliseconds. Default: `86400000` (24 hours) |
+| `JWT_EXPIRATION_MS` | No | Login session length in milliseconds. Default: `2592000000` (30 days) |
 
 Render provides `PORT` automatically, and the backend listens on it.
 
